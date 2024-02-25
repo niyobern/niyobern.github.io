@@ -3,8 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Bernard's Personal Website</title>
+    <style>
+        .home {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+        }
+
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            padding: 2px 40px;
+        }
+
+        .flex-col > h1 {
+            font-size: xxx-large;
+            font-weight: 600;
+            color: rgb(16, 16, 16);
+        }
+
+        .flex-col h2 {
+            text-align: center;
+            color: rgba(37, 35, 35, 0.783);
+            font-size: x-large;
+            font-weight: 400;
+            padding: 0 20px;
+        }
+
+        .flex-col div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .flex-col div .button{
+            text-align: center;
+            padding: 10px 20px;
+            background-color: rgb(245, 136, 12);
+            color: white;
+            width: fit-content;
+            font-size: xx-large;
+            font-weight: 800;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .flex-col div .button:hover{
+            background-color: rgb(245, 86, 12);
+            color: white;
+        }
+        @media (min-width: 768px) {
+            .home {
+                padding: 30px;
+            }
+            .content {
+            display: grid; /* Two-column layout */
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
