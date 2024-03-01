@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        /* Custom styles for the circular progress bar */
+        .circle-chart__circle {
+            animation: circle-chart-fill 2s reverse; /* 1 */
+            transform: rotate(-90deg); /* 2 */
+            transform-origin: center; /* 3 */
+        }
+
+        @keyframes circle-chart-fill {
+            to {
+                stroke-dasharray: 0 100;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen bg-gray-100">
+        <!-- Sidebar -->
+        <div class="flex">
+            <div class="w-64 h-screen bg-white p-5">
+                <div class="flex items-center space-x-4 p-2 mb-5">
+                    <span class="text-lg font-semibold text-gray-700">Bernard</span>
+                </div>
+                <nav>
+                    <a href="../dashboard.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white">
+                        <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                    </a>
+                    <a href="users.html" class="py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white">
+                        <i class="fas fa-users mr-2"></i> Users
+                    </a>
+                    <a href="articles.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white">
+                        <i class="fas fa-file-alt mr-3"></i> Articles
+                    </a>
+                    <a href="enquiries.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white">
+                        <i class="fas fa-question-circle mr-2"></i> Enquiries
+                    </a>
+                    <a href="../home.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </a>
+                </nav>
+            </div>
+            <!-- Main content -->
+            <div class="flex-1 p-10">
+                <div class="flex justify-between">
+                    <!-- Search and user info -->
+                    <div class="flex space-x-4">
+                        <div class="flex bg-white p-2 rounded">
+                            <input type="text" placeholder="Search" class="px-4 py-2 w-80 rounded focus:outline-none">
+                            <button class="px-4 text-white bg-blue-500 rounded">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Language and notifications -->
+                    <div class="flex items-center space-x-4">
+                        <button class="px-4 py-2 bg-white rounded shadow">
+                            Admin
+                            <i class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                        <div class="flex space-x-2">
+                            <button class="p-2 bg-white rounded-full shadow">
+                                <i class="fas fa-bell text-gray-600"></i>
+                            </button>
+                            <button class="p-2 bg-white rounded-full shadow">
+                                <i class="fas fa-comment-alt text-gray-600"></i>
+                            </button>
+                            <button class="p-2 bg-white rounded-full shadow">
+                                <i class="fas fa-user text-gray-600"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Revenue and graph -->
+                <form action="#" method="POST">
+                    <div class="mb-4">
+                        <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                        <input type="text" id="title" name="title" required
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Enter the article title">
+                    </div>
+    
+                    <div class="mb-4">
+                        <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+                        <input type="text" id="author" name="author" required
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Enter the author's name">
+                    </div>
+    
+                    <div class="mb-4">
+                        <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+                        <select id="category" name="category" required
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">Select a category</option>
+                            <option value="news">News</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="opinion">Opinion</option>
+                            <option value="review">Review</option>
+                        </select>
+                    </div>
+    
+                    <div class="mb-4">
+                        <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+                        <textarea id="content" name="content" rows="6" required
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Write your article content here..."></textarea>
+                    </div>
+    
+                    <div class="mb-4">
+                        <label for="cover-image" class="block text-sm font-medium text-gray-700">Cover Image</label>
+                        <input type="file" id="cover-image" name="cover-image"
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+    
+                    <div class="flex items-center justify-between">
+                        <button type="submit"
+                            class="px-6 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none" onclick="saveToLocalStorge()">
+                            Publish Article
+                        </button>
+                        <button type="reset"
+                            class="px-6 py-3 bg-gray-300 text-gray-700 rounded-md shadow-md hover:bg-gray-400 focus:outline-none">
+                            Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function saveToLocalStorge() {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const category = document.getElementById('category').value;
+            const content = document.getElementById('content').value;
+            const coverImage = document.getElementById('cover-image').value;
+            const newArticle = {
+                title,
+                author,
+                category,
+                content,
+                coverImage
+            };
+            localStorage.setItem('newArticle', JSON.stringify(newArticle));
+        }
+    </script>
+</body>
+
+</html>
