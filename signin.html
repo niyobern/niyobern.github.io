@@ -184,7 +184,7 @@
     <div class="container">
         <h2 class="title">Sign In</h2>
 
-        <form action="#" method="POST">
+        <form>
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required placeholder="Enter your email">
@@ -201,12 +201,12 @@
                 <a href="#" class="forgot-password">Forgot your password?</a>
             </div>
 
-            <button type="submit" class="submit-button">Sign In</button>
+            <button type="button" onclick=submitHandler() class="submit-button">Sign In</button>
         </form>
 
         <p class="mt-6 text-sm text-center text-gray-600">
             Don't have an account?
-            <a href="#" class="signup-link">Sign up</a>
+            <a href="/signup.html" class="signup-link">Sign up</a>
         </p>
     </div>
     <footer>
@@ -226,5 +226,29 @@
             </i></a>
         </div>
     </footer>
+    <script>
+        function submitHandler() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            fetch('https://mybrandbackend-1-z5395788.deta.app/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',                  
+                },
+                mode: 'no-cors',
+                body: JSON.stringify({ email, password })
+            }).then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Login successful');
+                    window.location.href = 'home.html';
+                } else {
+                    alert('Login failed');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </body>
 </html>
