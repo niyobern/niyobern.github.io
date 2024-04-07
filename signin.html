@@ -235,11 +235,10 @@
                 headers: {
                     'Content-Type': 'application/json',                  
                 },
-                mode: 'no-cors',
                 body: JSON.stringify({ email, password })
             }).then(response => response.json())
             .then(data => {
-                if (data.status === 'success') {
+                if (data.status == 200) {
                     alert('Login successful');
                     window.location.href = 'home.html';
                 } else {

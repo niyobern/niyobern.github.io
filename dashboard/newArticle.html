@@ -145,11 +145,20 @@
             const newArticle = {
                 title,
                 author,
-                category,
                 content,
-                coverImage
             };
-            localStorage.setItem('newArticle', JSON.stringify(newArticle));
+            fetch('https://mybrandbackend-1-z5395788.deta.app/blog/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'                
+                },
+                body: JSON.stringify(newArticle)
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data);
+            }).catch(error => {
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>

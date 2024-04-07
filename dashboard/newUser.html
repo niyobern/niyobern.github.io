@@ -126,17 +126,23 @@
     <script>
         function saveToLocalStorge() {
             const title = document.getElementById('title').value;
-            const author = document.getElementById('name').value;
-            const category = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
             const coverImage = document.getElementById('cover-image').value;
-            const newArticle = {
-                title,
-                author,
-                category,
-                content,
-                coverImage
+            const newUser = {
+                email,
+                name,
+                isAdmin: false
             };
-            localStorage.setItem('newUser', JSON.stringify(newArticle));
+            fetch('https://mybrandbackend-1-z5395788.deta.app/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'                
+                },
+                body: JSON.stringify(newUser)
+            }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
         }
     </script>
 </body>
