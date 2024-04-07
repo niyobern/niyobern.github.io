@@ -243,10 +243,10 @@
             }).then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    alert('Login successful');
+                    alert('Succesfully registered');
                     window.location.href = 'home.html';
                 } else {
-                    alert('Login failed');
+                    alert('Signup failed');
                 }
             }).catch(error => {
                 console.error('Error:', error);
