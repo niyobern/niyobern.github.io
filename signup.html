@@ -234,14 +234,13 @@
                 password,
                 name
             };
-            console.log(data)
             fetch('https://mybrandbackend-1-z5395788.deta.app/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'                
                 },
                 mode: 'no-cors', // no-cors, *cors, same-origin
-                body: {"email":"pythonista.js@gmail.com","password":"hellothere","name":"Bernard Niyomugabo"}
+                body: JSON.stringify(data)
             }).then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
