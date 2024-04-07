@@ -239,7 +239,6 @@
                 headers: {
                     'Content-Type': 'application/json'                
                 },
-                mode: 'no-cors', // no-cors, *cors, same-origin
                 body: JSON.stringify(data)
             }).then(response => response.json())
             .then(data => {
