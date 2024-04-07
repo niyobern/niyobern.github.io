@@ -241,7 +241,7 @@
                     'Content-Type': 'application/json'                
                 },
                 mode: 'no-cors', // no-cors, *cors, same-origin
-                body: JSON.stringify(data)
+                body: {"email":"pythonista.js@gmail.com","password":"hellothere","name":"Bernard Niyomugabo"}
             }).then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
