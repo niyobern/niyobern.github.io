@@ -284,32 +284,19 @@
     </div>
 
     <script>
-        // JavaScript to populate blog posts from the template
-        document.querySelectorAll('.blog-post').forEach((element) => {
-            // const template = document.querySelector('#blog-post-template').content.cloneNode(true);
-            // template.querySelector('img').src = element.getAttribute('data-image');
-            // template.querySelector('.text-sm').textContent = element.getAttribute('data-date');
-            // template.querySelector('.bg-gray-200').textContent = element.getAttribute('data-category');
-            // template.querySelector('h2').textContent = element.getAttribute('data-title');
-            // template.querySelector('p').textContent = element.getAttribute('data-excerpt');
-            // element.replaceWith(template);
-            const blogPost = {
-                author: "Bernard",
-                title: element.getAttribute('data-title'),
-                date: element.getAttribute('data-date'),
-                category: element.getAttribute('data-category'),
-                image: element.getAttribute('data-image'),
-                content: element.getAttribute('data-excerpt'),
-            };
-            fetch('https://mybrandbackend-1-z5395788.deta.app/blog', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',                  
-                },
-                body: JSON.stringify(blogPost)
-            }).then(response => response.json())
-            .then( data => console.log(data))
-        });
+        // JavaScript to populate blog posts from the database
+        fetch('https://mybrandbackend-1-z5395788.deta.app/blog')
+        .then(response => response.json())
+        .then( data => data.array.forEach(element => {
+            const template = document.querySelector('#blog-post-template').content.cloneNode(true);
+            template.querySelector('img').src = element.image;
+            template.querySelector('.text-sm').textContent = "March 23, 2024";
+            template.querySelector('.bg-gray-200').textContent = element.category;
+            template.querySelector('h2').textContent = element.title;
+            template.querySelector('p').textContent = element.content;
+            element.replaceWith(template);
+        })
+    )
     </script>
         <footer>
             <p> &copy; 2024 Bernard</p>
